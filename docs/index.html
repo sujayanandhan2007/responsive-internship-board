@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>InternBoard — Student Internship Board</title>
+  <meta name="description" content="Search and filter fictional student internships and apply online.">
+  <link rel="stylesheet" href="css/styles.css">
+  <script src="js/app.js" defer></script>
+</head>
+<body>
+  <a class="skip-link" href="#results">Skip to internships</a>
+
+  <header class="site-header">
+    <div class="container">
+      <p class="brand">InternBoard</p>
+    </div>
+  </header>
+
+  <main>
+    <section class="hero" aria-labelledby="page-title">
+      <div class="container">
+        <h1 id="page-title">Find your next internship</h1>
+        <p>Search fictional openings, filter by domain and work mode, and apply in a minute.</p>
+      </div>
+    </section>
+
+    <section class="container" aria-labelledby="filters-title">
+      <h2 id="filters-title" class="visually-hidden">Search and filters</h2>
+      <form id="filter-form" class="filters" role="search" novalidate>
+        <div class="field field-search">
+          <label for="search">Search</label>
+          <input id="search" name="q" type="search" placeholder="Title, skill, location…" autocomplete="off">
+        </div>
+        <div class="field">
+          <label for="domain">Domain</label>
+          <select id="domain" name="domain"><option value="">All domains</option></select>
+        </div>
+        <div class="field">
+          <label for="mode">Work mode</label>
+          <select id="mode" name="mode"><option value="">All modes</option></select>
+        </div>
+        <button type="reset" id="reset" class="btn btn-secondary">Reset filters</button>
+      </form>
+    </section>
+
+    <section id="results" class="container" aria-labelledby="results-title" tabindex="-1">
+      <h2 id="results-title">Internships</h2>
+      <p id="result-count" class="result-count" role="status" aria-live="polite"></p>
+      <div id="state" class="state" hidden></div>
+      <ul id="list" class="grid" aria-busy="false"></ul>
+      <nav id="pager" class="pager" aria-label="Pagination" hidden>
+        <button type="button" id="prev" class="btn btn-secondary">Previous</button>
+        <span id="page-info"></span>
+        <button type="button" id="next" class="btn btn-secondary">Next</button>
+      </nav>
+    </section>
+  </main>
+
+  <footer class="site-footer">
+    <div class="container"><p>InternBoard is a demo project. All internships are fictional.</p></div>
+  </footer>
+
+  <dialog id="detail" aria-labelledby="detail-title">
+    <div class="dialog-head">
+      <h2 id="detail-title"></h2>
+      <button type="button" id="detail-close" class="btn btn-secondary">Close</button>
+    </div>
+    <dl id="detail-info" class="detail-info"></dl>
+    <h3>Apply</h3>
+    <form id="apply-form" novalidate>
+      <div class="field">
+        <label for="a-name">Full name</label>
+        <input id="a-name" name="name" type="text" autocomplete="name" required aria-describedby="a-name-err">
+        <p id="a-name-err" class="field-error" hidden></p>
+      </div>
+      <div class="field">
+        <label for="a-email">Email</label>
+        <input id="a-email" name="email" type="email" autocomplete="email" required aria-describedby="a-email-err">
+        <p id="a-email-err" class="field-error" hidden></p>
+      </div>
+      <div class="field">
+        <label for="a-url">Portfolio link <span class="optional">(optional)</span></label>
+        <input id="a-url" name="portfolioUrl" type="url" inputmode="url" placeholder="https://" aria-describedby="a-url-err">
+        <p id="a-url-err" class="field-error" hidden></p>
+      </div>
+      <p id="apply-msg" class="form-msg" role="status" tabindex="-1" hidden></p>
+      <button type="submit" id="apply-submit" class="btn btn-primary">Submit application</button>
+    </form>
+  </dialog>
+</body>
+</html>
